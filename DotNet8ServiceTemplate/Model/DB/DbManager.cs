@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-
 namespace Model.DB;
 public class DbManager : IDbManager
 {

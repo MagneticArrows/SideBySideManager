@@ -1,19 +1,10 @@
 ﻿using Model.DB;
 
-namespace Service
+namespace Service;
+public class ExampleService(IDbManager _dbClient) : IExampleService
 {
-    public class ExampleService : IExampleService
+    public async Task<IEnumerable<int>> RunExample()
     {
-        private readonly IDbManager _dapperClient;
-
-        public ExampleService(IDbManager dapperClient)
-        {
-            _dapperClient = dapperClient;
-        }
-
-        public async Task<IEnumerable<int>> RunExample()
-        {
-            return new List<int>();
-        }
+        return new List<int>();
     }
 }

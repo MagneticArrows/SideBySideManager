@@ -5,21 +5,12 @@ namespace WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ExampleController : ControllerBase
+public class ExampleController(ILogger<ExampleController> _logger, IExampleService _exampleService) : ControllerBase
 {
-    private readonly ILogger<ExampleController> _logger;
-    private readonly IExampleService _weatherForecastService;
-
-    public ExampleController(ILogger<ExampleController> logger, IExampleService weatherForecastService)
-    {
-        _logger = logger;
-        _weatherForecastService = weatherForecastService;
-    }
-
-    [HttpGet(Name = "RunExample")]
+    [HttpGet("RunExample")]
     public async Task<IEnumerable<int>> RunExample()
     {
-        var res = await _weatherForecastService.RunExample();
+        var res = await _exampleService.RunExample();
         return res;
     }
 }
