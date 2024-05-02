@@ -1,6 +1,6 @@
 ﻿using Service;
-using Model.Http;
 using Model.DB;
+using SideBySideManagerNuget;
 
 public static class Startup
 {
@@ -16,8 +16,11 @@ public static class Startup
     private static void SetDiRegistration(IServiceCollection services)
     {
         services.AddSingleton<IExampleService, ExampleService>();
-        services.AddSingleton<IHttpManager, HttpManager>();
         services.AddSingleton<IDbManager, DbManager>();
+
+
+        services.AddSingleton<IComparisonManager, ComparisonManager>();
+        services.AddSingleton<ISideBySideManager, SideBySideManager>();
     }
 }
 

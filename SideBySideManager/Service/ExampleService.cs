@@ -1,10 +1,20 @@
-﻿using Model.DB;
+﻿using Contracts.Http;
+using Model.Http;
+using SideBySideManagerNuget;
 
 namespace Service;
-public class ExampleService(IDbManager _dbClient) : IExampleService
+public class ExampleService(ISideBySideManager sideBySideManager) : IExampleService
 {
-    public async Task<IEnumerable<int>> RunExample()
-    {
-        return new List<int>();
+    public async Task<SomeServiceResponse> RunExample()
+    {  
+        var oldCaller = new OldServiceCaller();
+        var newCaller = new NewServiceCaller();
+
+        var result = await sideBySideManager.RunSideBySideAsync(
+            () => oldCaller.GetSomeServiceResponseAsync(new()),
+            () => newCaller.GetSomeServiceResponseAsync(new())
+            );
+
+        return result;
     }
 }

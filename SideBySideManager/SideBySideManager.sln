@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{00B83BFF-D888-4891-BDE1-D12F1C4C2B13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideBySideManager", "SideBySideManager\SideBySideManager.csproj", "{90EAAE01-D304-4150-A558-554FADB2D385}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideBySideManagerNuget", "SideBySideManager\SideBySideManagerNuget.csproj", "{90EAAE01-D304-4150-A558-554FADB2D385}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
