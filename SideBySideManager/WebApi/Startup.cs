@@ -18,7 +18,7 @@ public static class Startup
         services.AddSingleton<IExampleService, ExampleService>();
         services.AddSingleton<IDbManager, DbManager>();
 
-
+        //todo implement di manager - include options for data auditor, logging and comparisonManager, end product one command with potential providers
         services.AddSingleton<IComparisonManager, ComparisonManager>();
         services.AddSingleton<ISideBySideManager, SideBySideManager>();
     }

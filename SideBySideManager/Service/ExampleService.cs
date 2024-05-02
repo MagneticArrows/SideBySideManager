@@ -12,8 +12,7 @@ public class ExampleService(ISideBySideManager sideBySideManager) : IExampleServ
 
         var result = await sideBySideManager.RunSideBySideAsync(
             () => oldCaller.GetSomeServiceResponseAsync(new()),
-            () => newCaller.GetSomeServiceResponseAsync(new())
-            );
+            () => newCaller.GetSomeServiceResponseAsync(new()));
 
         return result;
     }

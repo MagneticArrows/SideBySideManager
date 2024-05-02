@@ -1,6 +1,6 @@
 ﻿namespace SideBySideManagerNuget
 {
-    public interface IComparisonManager
+    public interface IComparisonManager//todo implement
     {
         public void Compare<T>(T? res1, T? res2);
 

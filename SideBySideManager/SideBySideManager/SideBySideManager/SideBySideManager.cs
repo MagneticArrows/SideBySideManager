@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace SideBySideManagerNuget;
+﻿namespace SideBySideManagerNuget;
 
 public class SideBySideManager(IComparisonManager comparisonManager) : ISideBySideManager
-{
+{//todo cleanup
     public async Task<T> RunSideBySideAsync<T>(Func<Task<T>> task1, Func<Task<T>> task2, bool runParallel = true, bool breakFlow = false)
     {
         if (breakFlow)
