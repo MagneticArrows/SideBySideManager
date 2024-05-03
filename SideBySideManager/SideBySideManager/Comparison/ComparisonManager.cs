@@ -7,14 +7,14 @@ namespace SideBySideManagerNuget;
 public class ComparisonManager(ICompareLogic comparer,
     IComparisonAuditManager comparisonAuditManager) : IComparisonManager
 {
-    public bool CompareAndAudit<T>(T? obj1, T? obj2)
+    public bool CompareAndAudit<T>(T? item1, T? item2)
     {       
-        var result = comparer.Compare(obj1, obj2);
+        var result = comparer.Compare(item1, item2);
 
         var comparisonObject = new ComparisonObject<T, ComparisonResult>()
         {
-            Obj1 = obj1,
-            Obj2 = obj2,
+            Item1 = item1,
+            Item2 = item2,
             ComparisonResult = result
         };
 
