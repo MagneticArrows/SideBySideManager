@@ -6,10 +6,5 @@
         {
             throw new NotImplementedException();
         }
-
-        public void Compare<T>(T[] results)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

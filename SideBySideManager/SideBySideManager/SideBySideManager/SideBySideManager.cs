@@ -9,7 +9,7 @@ public class SideBySideManager(IComparisonManager comparisonManager) : ISideBySi
             if (runParallel)
             {
                 var results = await Task.WhenAll(task1(), task2());
-                comparisonManager.Compare(results);
+                comparisonManager.Compare(results[0], results[1]);
                 return results.First();
             }
 
@@ -36,7 +36,7 @@ public class SideBySideManager(IComparisonManager comparisonManager) : ISideBySi
             {
                 var results = await Task.WhenAll(task1(), task2WithNoExceptions());
                 if(results.Last() is not null)
-                    comparisonManager.Compare(results);
+                    comparisonManager.Compare(results[0], results[1]);
 
                 return results.First();
             }
