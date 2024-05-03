@@ -7,7 +7,7 @@ namespace SideBySideManagerNuget;
 public class ComparisonManager(ICompareLogic comparer,
     IComparisonAuditManager comparisonAuditManager) : IComparisonManager
 {
-    public bool CompareAndAudit<T>(T? item1, T? item2)
+    public async Task<bool> CompareAndAudit<T>(T? item1, T? item2)
     {       
         var result = comparer.Compare(item1, item2);
 

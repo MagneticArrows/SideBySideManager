@@ -1,9 +1,12 @@
-﻿namespace SideBySideManagerNuget.DataAuditor;
+﻿using Newtonsoft.Json;//todo remove this nuget
+
+namespace SideBySideManagerNuget.DataAuditor;
 
 public class ComparisonAuditManager : IComparisonAuditManager
 {
-    public Task AuditComparisonObject<T>(T comparisonObject)
+    public async Task AuditComparisonObject<T>(T comparisonObject)
     {
-        throw new NotImplementedException();
+        var jsonRepresentation = JsonConvert.SerializeObject(comparisonObject);
+        Console.WriteLine(jsonRepresentation);
     }
 }
