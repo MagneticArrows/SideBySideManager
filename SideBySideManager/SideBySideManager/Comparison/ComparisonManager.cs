@@ -19,5 +19,7 @@ public class ComparisonManager(ICompareLogic comparer,
         };
 
         comparisonAuditManager.AuditComparisonObject(comparisonObject);
+
+        return result.AreEqual;
     }
 }
