@@ -1,8 +1,6 @@
 ﻿namespace SideBySideManagerNuget.Comparison;
 
-public class ComparisonObject<T, E>
+public class ComparisonObject<T, E> : BaseComparisonObject<T>
 {
-    public T Item1 {  get; set; } 
-    public T Item2 {  get; set; } 
     public E ComparisonResult {  get; set; } 
 }
