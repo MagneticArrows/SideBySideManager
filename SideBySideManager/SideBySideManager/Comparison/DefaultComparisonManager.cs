@@ -1,5 +1,5 @@
 ﻿using KellermanSoftware.CompareNetObjects;
-using SideBySideManagerNuget.ComparisonAndAudit;
+using SideBySideManagerNuget.Contracts;
 
 namespace SideBySideManagerNuget.Comparison;
 

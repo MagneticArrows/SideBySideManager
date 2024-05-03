@@ -1,4 +1,4 @@
-﻿using SideBySideManagerNuget.ComparisonAndAudit;
+﻿using SideBySideManagerNuget.Contracts;
 
 namespace SideBySideManagerNuget.DataAuditor;
 

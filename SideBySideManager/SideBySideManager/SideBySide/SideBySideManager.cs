@@ -1,5 +1,5 @@
 ﻿using SideBySideManagerNuget.Comparison;
-using SideBySideManagerNuget.ComparisonAndAudit;
+using SideBySideManagerNuget.Contracts;
 using SideBySideManagerNuget.DataAuditor;
 
 namespace SideBySideManagerNuget.SideBySide;
