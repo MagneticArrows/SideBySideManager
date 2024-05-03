@@ -1,25 +1,21 @@
-﻿using SideBySideManagerNuget.ComparisonAndAudit;
+﻿using SideBySideManagerNuget.Comparison;
+using SideBySideManagerNuget.ComparisonAndAudit;
+using SideBySideManagerNuget.DataAuditor;
 
 namespace SideBySideManagerNuget.SideBySide;
 
-public class SideBySideManager(IComparisonAndAuditManager comparisonManager) : ISideBySideManager
+public class SideBySideManager(IComparisonManager comparisonManager, IAuditManager auditManager) : ISideBySideManager
 {
     public async Task<T> RunSideBySideAsync<T>(Func<Task<T>> taskToInvoke1, Func<Task<T>> taskToInvoke2,
         bool runParallel = true, bool breakFlow = false)
     {
-        if (breakFlow)
-        {
-            var (res1, res2) = await RunSideBySideAsync(taskToInvoke1, taskToInvoke2, runParallel);
-            await comparisonManager.CompareAndAudit(res1, res2);
-            return res1;
-        }
-        else
-        {
-            var taskToInvoke2WithNoException = GetWithoutExceptions(taskToInvoke2);
-            var (res1, res2) = await RunSideBySideAsync(taskToInvoke1, taskToInvoke2WithNoException, runParallel);
-            await comparisonManager.CompareAndAudit(res1, res2);
-            return res1;
-        }
+        if (!breakFlow)
+            taskToInvoke2 = GetWithoutExceptions(taskToInvoke2);      
+
+        var (res1, res2) = await RunSideBySideAsync(taskToInvoke1, taskToInvoke2, runParallel);
+        var comparisonObject = await comparisonManager.CompareAsync(res1, res2);
+        await auditManager.AuditComparisonObject<BaseComparisonObject<T>, T>(comparisonObject);
+        return res1;
     }
 
     private async Task<(T res1, T res2)> RunSideBySideAsync<T>(Func<Task<T>> task1, Func<Task<T>> task2, bool runParallel)

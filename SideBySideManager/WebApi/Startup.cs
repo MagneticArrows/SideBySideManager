@@ -24,7 +24,6 @@ public static class Startup
 
         //todo implement di manager - include options for data auditor, logging and comparisonManager, end product one command with potential providers
         services.AddSingleton<ISideBySideManager, SideBySideManager>();
-        services.AddSingleton<IComparisonAndAuditManager, ComparisonAndAuditManager>();
         services.AddSingleton<IComparisonManager, DefaultComparisonManager>();
         services.AddSingleton<IAuditManager, DefaultAuditManager>();
         services.AddSingleton<ICompareLogic>(provider =>
