@@ -11,4 +11,8 @@
     <Folder Include="DataAuditor\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CompareNETObjects" Version="4.83.0" />
+  </ItemGroup>
+
 </Project>
