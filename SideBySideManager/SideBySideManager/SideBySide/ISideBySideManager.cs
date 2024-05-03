@@ -1,5 +1,4 @@
-﻿
-namespace SideBySideManagerNuget;
+﻿namespace SideBySideManagerNuget.SideBySide;
 
 public interface ISideBySideManager
 {

@@ -1,8 +1,8 @@
-﻿using SideBySideManagerNuget.Comparison;
+﻿using SideBySideManagerNuget.ComparisonAndAudit;
 
 namespace SideBySideManagerNuget.DataAuditor;
 
-public interface IComparisonAuditManager
+public interface IAuditManager
 {
     public Task AuditComparisonObject<T, E>(T comparisonObject) where T : BaseComparisonObject<E>;
 }

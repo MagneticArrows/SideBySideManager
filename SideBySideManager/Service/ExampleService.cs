@@ -1,6 +1,6 @@
 ﻿using Contracts.Http;
 using Model.Http;
-using SideBySideManagerNuget;
+using SideBySideManagerNuget.SideBySide;
 
 namespace Service;
 public class ExampleService(ISideBySideManager sideBySideManager) : IExampleService

@@ -1,4 +1,4 @@
-﻿namespace SideBySideManagerNuget.Comparison
+﻿namespace SideBySideManagerNuget.ComparisonAndAudit
 {
     public abstract class BaseComparisonObject<T>
     {

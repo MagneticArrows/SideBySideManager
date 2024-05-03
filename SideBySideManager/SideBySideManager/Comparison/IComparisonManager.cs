@@ -1,6 +1,8 @@
-﻿namespace SideBySideManagerNuget;
+﻿using SideBySideManagerNuget.ComparisonAndAudit;
 
-public interface IComparisonManager//todo implement
+namespace SideBySideManagerNuget.Comparison;
+
+public interface IComparisonManager
 {
-    public Task<bool> CompareAndAudit<T>(T? item1, T? item2);
+    public Task<BaseComparisonObject<T>> CompareAsync<T>(T item1, T item2);
 }

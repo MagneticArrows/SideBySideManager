@@ -1,8 +1,10 @@
 ﻿using Service;
 using Model.DB;
-using SideBySideManagerNuget;
 using KellermanSoftware.CompareNetObjects;
+using SideBySideManagerNuget.ComparisonAndAudit;
+using SideBySideManagerNuget.SideBySide;
 using SideBySideManagerNuget.DataAuditor;
+using SideBySideManagerNuget.Comparison;
 
 public static class Startup
 {
@@ -22,8 +24,9 @@ public static class Startup
 
         //todo implement di manager - include options for data auditor, logging and comparisonManager, end product one command with potential providers
         services.AddSingleton<ISideBySideManager, SideBySideManager>();
-        services.AddSingleton<IComparisonManager, ComparisonManager>();
-        services.AddSingleton<IComparisonAuditManager, ComparisonAuditManager>();
+        services.AddSingleton<IComparisonAndAuditManager, ComparisonAndAuditManager>();
+        services.AddSingleton<IComparisonManager, DefaultComparisonManager>();
+        services.AddSingleton<IAuditManager, DefaultAuditManager>();
         services.AddSingleton<ICompareLogic>(provider =>
         {
             var comparer = new CompareLogic();
