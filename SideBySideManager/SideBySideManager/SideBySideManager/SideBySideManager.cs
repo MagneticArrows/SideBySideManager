@@ -9,13 +9,13 @@ public class SideBySideManager(IComparisonManager comparisonManager) : ISideBySi
             if (runParallel)
             {
                 var results = await Task.WhenAll(task1(), task2());
-                comparisonManager.Compare(results[0], results[1]);
+                comparisonManager.CompareAndAudit(results[0], results[1]);
                 return results.First();
             }
 
             var res1 = await task1();
             var res2 = await task2();
-            comparisonManager.Compare(res1, res2);
+            comparisonManager.CompareAndAudit(res1, res2);
             return res1;
         }
         else
@@ -36,7 +36,7 @@ public class SideBySideManager(IComparisonManager comparisonManager) : ISideBySi
             {
                 var results = await Task.WhenAll(task1(), task2WithNoExceptions());
                 if(results.Last() is not null)
-                    comparisonManager.Compare(results[0], results[1]);
+                    comparisonManager.CompareAndAudit(results[0], results[1]);
 
                 return results.First();
             }
@@ -45,7 +45,7 @@ public class SideBySideManager(IComparisonManager comparisonManager) : ISideBySi
             var res2 = await task2WithNoExceptions();
 
             if (res2 is not null)
-                comparisonManager.Compare(res1, res2);
+                comparisonManager.CompareAndAudit(res1, res2);
             return res1;
         }
     }

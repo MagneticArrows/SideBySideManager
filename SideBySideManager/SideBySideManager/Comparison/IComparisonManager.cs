@@ -1,7 +1,6 @@
-﻿namespace SideBySideManagerNuget
+﻿namespace SideBySideManagerNuget;
+
+public interface IComparisonManager//todo implement
 {
-    public interface IComparisonManager//todo implement
-    {
-        public void Compare<T>(T? obj1, T? obj2);
-    }
+    public bool CompareAndAudit<T>(T? obj1, T? obj2);
 }

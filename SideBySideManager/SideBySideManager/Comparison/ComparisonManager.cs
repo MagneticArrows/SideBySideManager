@@ -1,26 +1,23 @@
 ﻿using KellermanSoftware.CompareNetObjects;
+using SideBySideManagerNuget.Comparison;
+using SideBySideManagerNuget.DataAuditor;
 
-namespace SideBySideManagerNuget
+namespace SideBySideManagerNuget;
+
+public class ComparisonManager(ICompareLogic comparer,
+    IComparisonAuditManager comparisonAuditManager) : IComparisonManager
 {
-    public class ComparisonManager(ICompareLogic comparer) : IComparisonManager
-    {
-        public void Compare<T>(T? obj1, T? obj2)
-        {       
-            var result = comparer.Compare(obj1, obj2);
+    public bool CompareAndAudit<T>(T? obj1, T? obj2)
+    {       
+        var result = comparer.Compare(obj1, obj2);
 
-            if (result.AreEqual)
-            {
-                Console.WriteLine("Objects are equal");
-            }
-            else
-            {
-                Console.WriteLine("Objects are not equal");
+        var comparisonObject = new ComparisonObject<T, ComparisonResult>()
+        {
+            Obj1 = obj1,
+            Obj2 = obj2,
+            ComparisonResult = result
+        };
 
-                foreach (var difference in result.Differences)
-                {
-                    Console.WriteLine($"Difference found at {difference.PropertyName}: {difference.Object1Value} (Object1) vs {difference.Object2Value} (Object2)");
-                }
-            }
-        }
+        comparisonAuditManager.AuditComparisonObject(comparisonObject);
     }
 }

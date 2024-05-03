@@ -1,6 +1,5 @@
-﻿namespace Contracts.Http
+﻿namespace Contracts.Http;
+
+public class SomeServiceResponse
 {
-    public class SomeServiceResponse
-    {
-    }
 }
