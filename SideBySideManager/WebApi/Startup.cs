@@ -1,7 +1,6 @@
 ﻿using Service;
 using Model.DB;
 using KellermanSoftware.CompareNetObjects;
-using SideBySideManagerNuget.ComparisonAndAudit;
 using SideBySideManagerNuget.SideBySide;
 using SideBySideManagerNuget.DataAuditor;
 using SideBySideManagerNuget.Comparison;
@@ -32,6 +31,16 @@ public static class Startup
             comparer.Config.MaxDifferences = 5;//todo - we will support only several configurations
             return comparer;
         });//todo uninstall the CompareNETObjects nuget from web api
+
+
+
+        // todo add the other services, add relevant configuration, make sure works
+        /*services.AddSideBySideManager((options) =>
+        {
+            options.Environment = "QA";
+            options.TimeoutInSeconds = 5;
+            
+        });*/
     }
 }
 
