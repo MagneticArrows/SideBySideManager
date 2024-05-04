@@ -1,11 +1,9 @@
 ﻿using Service;
 using Model.DB;
 using KellermanSoftware.CompareNetObjects;
-using SideBySideManagerNuget.ComparisonAndAudit;
 using SideBySideManagerNuget.SideBySide;
 using SideBySideManagerNuget.DataAuditor;
 using SideBySideManagerNuget.Comparison;
-using SideBySideManagerNuget.DiManager;
 
 public static class Startup
 {
