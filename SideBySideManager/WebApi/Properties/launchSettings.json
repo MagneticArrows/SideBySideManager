@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "DotNet8ServiceTemplate": {
+    "SideBySideManager": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
