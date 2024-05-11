@@ -23,25 +23,12 @@ public static class Startup
         services.AddSingleton<IExampleService, ExampleService>();
         services.AddSingleton<IDbManager, DbManager>();
 
-        //todo implement di manager - include options for data auditor, logging and comparisonManager, end product one command with potential providers
-        services.AddSingleton<ISideBySideManager, SideBySideManager>();
-        services.AddSingleton<IComparisonManager, DefaultComparisonManager>();
-        services.AddSingleton<IAuditManager, DefaultAuditManager>();
-        services.AddSingleton<ICompareLogic>(provider =>
+        var x = new SideBySideOptions()
         {
-            var comparer = new CompareLogic();
-            comparer.Config.MaxDifferences = 5;//todo - we will support only several configurations
-            return comparer;
-        });//todo uninstall the CompareNETObjects nuget from web api
-
-
-
+            CompareLogic = new CompareLogic()
+        };
         // todo add the other services, add relevant configuration, make sure works
-        services.AddSideBySideManager(options =>
-        {
-            options.Environment = "QA";
-            options.TimeoutInSeconds = 5;
-        });
+        services.AddSideBySideManager(x);
     }
 }
 

@@ -1,9 +1,11 @@
-﻿namespace SideBySideManagerNuget.DiManager
+﻿using KellermanSoftware.CompareNetObjects;
+
+namespace SideBySideManagerNuget.DiManager
 {
     public class SideBySideOptions
     {
         public string Environment { get; set; }
-        public int TimeoutInSeconds { get; set; }
-        // Additional configurable properties
+        public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(10);
+        public CompareLogic CompareLogic { get; set; } = new();
     }
 }
