@@ -1,5 +1,6 @@
 ﻿using KellermanSoftware.CompareNetObjects;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 using SideBySideManagerNuget.Comparison;
 using SideBySideManagerNuget.DataAuditor;
 using SideBySideManagerNuget.SideBySide;
@@ -33,7 +34,6 @@ namespace SideBySideManagerNuget.DiManager
         {
             services.AddTransient<ISideBySideManager, SideBySideManager>();
             services.AddSingleton<IComparisonManager, DefaultComparisonManager>();
-            services.AddSingleton<IAuditManager, DefaultAuditManager>();
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿using SideBySideManagerNuget.Comparison;
+﻿using MongoDB.Driver;
+using SideBySideManagerNuget.Comparison;
 using SideBySideManagerNuget.Contracts;
 using SideBySideManagerNuget.DataAuditor;
 
 namespace SideBySideManagerNuget.SideBySide;
 
-public class SideBySideManager(IComparisonManager comparisonManager, IAuditManager auditManager) : ISideBySideManager
+public class SideBySideManager(IComparisonManager comparisonManager, IAuditManager<IMongoClient> auditManager) : ISideBySideManager
 {
     public async Task<T> RunSideBySideAsync<T>(Func<Task<T>> taskToInvoke1, Func<Task<T>> taskToInvoke2,
         bool runParallel = true, bool breakFlow = false)
