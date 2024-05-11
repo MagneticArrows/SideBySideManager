@@ -4,6 +4,8 @@ using KellermanSoftware.CompareNetObjects;
 using SideBySideManagerNuget.SideBySide;
 using SideBySideManagerNuget.DataAuditor;
 using SideBySideManagerNuget.Comparison;
+using SideBySideManagerNuget.DiManager;
+using Microsoft.Extensions.Options;
 
 public static class Startup
 {
@@ -35,12 +37,11 @@ public static class Startup
 
 
         // todo add the other services, add relevant configuration, make sure works
-        /*services.AddSideBySideManager((options) =>
+        services.AddSideBySideManager(options =>
         {
             options.Environment = "QA";
             options.TimeoutInSeconds = 5;
-            
-        });*/
+        });
     }
 }
 
