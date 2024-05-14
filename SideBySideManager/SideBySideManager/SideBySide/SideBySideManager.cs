@@ -51,9 +51,9 @@ public class SideBySideManager(IComparisonManager comparisonManager, IAuditManag
         return taskToInvokeWithNoException;
     }
 
-    private static ComparisonAuditItemDto GetComparisonAuditItem<T>(T res1, T res2, ComparisonResult comparisonObject) where T : class
+    private static ComparisonAuditItemDto<T> GetComparisonAuditItem<T>(T res1, T res2, ComparisonResult comparisonObject) where T : class
     {
-        return new ComparisonAuditItemDto
+        return new ComparisonAuditItemDto<T>
         {
             AreEquals = true,
             DifferencesString = comparisonObject.DifferencesString,
