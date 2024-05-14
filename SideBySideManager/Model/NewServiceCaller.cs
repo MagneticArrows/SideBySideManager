@@ -1,6 +1,6 @@
 ﻿using Contracts.Http;
 
-namespace Model.Http;
+namespace Model;
 
 public class NewServiceCaller
 {

@@ -1,12 +1,10 @@
 ﻿using Service;
-using Model.DB;
 using KellermanSoftware.CompareNetObjects;
-using SideBySideManagerNuget.SideBySide;
-using SideBySideManagerNuget.DataAuditor;
-using SideBySideManagerNuget.Comparison;
 using SideBySideManagerNuget.DiManager;
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using SideBySideManagerNuget.DataAuditor;
+
+namespace WebApi;
 
 public static class Startup
 {
@@ -22,16 +20,12 @@ public static class Startup
     private static void SetDiRegistration(IServiceCollection services)
     {
         services.AddSingleton<IExampleService, ExampleService>();
-        services.AddSingleton<IDbManager, DbManager>();
+        services.AddSingleton<IMongoClient>(provider => new MongoClient("mongodb://localhost:27017/"));
 
-        var sideBySideOptions = new SideBySideOptions()
+        services.AddSideBySideManager<MongoAuditManager>(new SideBySideOptions()
         {
             CompareLogic = new CompareLogic()
-        };
-        // todo add the other services, add relevant configuration, make sure works
-        services.AddSideBySideManager(sideBySideOptions);
-        services.AddSingleton<IMongoClient>(provider => new MongoClient("mongodb://localhost:27010/"));
-        services.AddSingleton<IAuditManager<IMongoClient>, AuditManager>();
+        });
     }
 }
 

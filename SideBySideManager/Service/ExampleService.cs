@@ -1,5 +1,5 @@
 ﻿using Contracts.Http;
-using Model.Http;
+using Model;
 using SideBySideManagerNuget.SideBySide;
 
 namespace Service;
@@ -12,12 +12,11 @@ public class ExampleService(ISideBySideManager sideBySideManager) : IExampleServ
 
         var result = await sideBySideManager.RunSideBySideAsync(
             () => oldCaller.GetSomeServiceResponseAsync(new()),
-            () => newCaller.GetSomeServiceResponseAsync(new()));
-
+            () => oldCaller.GetSomeServiceResponseAsync(new()));
 
         var result2 = await sideBySideManager.RunSideBySideAsync(
             () => oldCaller.GetSomeServiceResponseAsync(new()),
-            () => oldCaller.GetSomeServiceResponseAsync(new()));
+            () => newCaller.GetSomeServiceResponseAsync(new()));
 
         return result;
     }
