@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Contracts.Http;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using SideBySideManagerNuget.Contracts;
 
@@ -20,8 +21,8 @@ public class MongoAuditManager : IAuditManager
         {
             AreEquals = comparisonAuditItemDto.AreEquals,
             DifferencesString = comparisonAuditItemDto.DifferencesString,
-            Response1 = comparisonAuditItemDto.Response1.ToBsonDocument(),
-            Response2 = comparisonAuditItemDto.Response2.ToBsonDocument(),
+            Response1 = comparisonAuditItemDto.Response1 as SomeServiceResponse,
+            Response2 = comparisonAuditItemDto.Response2 as SomeServiceResponse,
         };
 
         await _collection.InsertOneAsync(comparisonAuditItemDto2);
@@ -33,8 +34,8 @@ public class ComparisonAuditItemDto2
     public bool AreEquals { get; set; }
     public string DifferencesString { get; set; }
 
-    public object Response1 { get; set; }
+    public SomeServiceResponse Response1 { get; set; }
 
-    public object Response2 { get; set; }
+    public SomeServiceResponse Response2 { get; set; }
 }
 
